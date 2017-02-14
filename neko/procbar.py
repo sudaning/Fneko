@@ -199,7 +199,7 @@ if __name__ == '__main__':
 		total = 56
 		p.set_details(total, widget_type="percent").start("炫光舞法 朵蜜天女 变身! Dancing baby 朵蜜 Dance up...")
 		for i in range(0, total + 1):
-			if p.move(i):
+			if p.move():
 				time.sleep(0.1)
 		p.stop(color_str("shining", "sky_blue"))
 		time.sleep(1)
