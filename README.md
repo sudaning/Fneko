@@ -12,18 +12,19 @@ In [/scripts](https://github.com/sudaning/PytLab-Neko/tree/master/scripts) , the
 
 ##Installation
 1. Via **pip**  
-`pip install pyNeko`  
+```pip install pyNeko```  
 2. Via **easy_install**  
-`easy_install pyNeko`
+```easy_install pyNeko```
 3. From **source**  
-`python setup.py install`
+```python setup.py install```
 
 ##upgrading
 1. Via **pip**  
-`pip install --upgrade pyNeko`
+```pip install --upgrade pyNeko```
 
 ##Examples
-<pre>
+
+```python
 from neko import ProcBar, color_str  
 p = ProcBar(mod='details')  
 total = 56  
@@ -32,8 +33,7 @@ for i in range(0, total + 1):
     if p.move():  
     time.sleep(0.1)  
 p.stop(color_str("ending", "sky_blue"))
-</pre>
-
+```
 
 ##From the author
 **Welcome to use pyNeko (●'◡'●)ﾉ♥**  
