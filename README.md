@@ -1,7 +1,9 @@
 #Welcome to Neko
 ![](https://travis-ci.org/sudaning/PytLab-Neko.svg?branch=master)
+![](https://img.shields.io/pypi/v/pyNeko.svg)
 ![](https://img.shields.io/badge/python-3.5-green.svg)
 ![](https://img.shields.io/badge/python-2.7-green.svg)
+![](https://img.shields.io/badge/docs-stable-brightgreen.svg?style=flat)
 ![](https://img.shields.io/github/stars/sudaning/PytLab-Neko.svg)
 ![](https://img.shields.io/github/forks/sudaning/PytLab-Neko.svg)
 
