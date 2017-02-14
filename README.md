@@ -40,5 +40,5 @@ p.stop(color_str("ending", "sky_blue"))
 
 ##From the author
 **Welcome to use pyNeko (●'◡'●)ﾉ♥**  
-If you find any bug, please report it to me by opening a issue.  
-pyNeko needs to be improved, your contribution will be welcomed.  
+If you find any bug, please report it to me by opening a issue.
+pyNeko needs to be improved, your contribution will be welcomed.
