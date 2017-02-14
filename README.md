@@ -25,6 +25,7 @@ In [/scripts](https://github.com/sudaning/PytLab-Neko/tree/master/scripts) , the
 ##Examples
 
 ```python
+import time  
 from neko import ProcBar, color_str  
 p = ProcBar(mod='details')  
 total = 56  
