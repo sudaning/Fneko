@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+#Welcome to Neko
+![](https://travis-ci.org/sudaning/PytLab-Neko.svg?branch=master)
+![](https://img.shields.io/badge/python-3.5-green.svg)
+![](https://img.shields.io/badge/python-2.7-green.svg)
+![](https://img.shields.io/github/stars/sudaning/PytLab-Neko.svg)
+![](https://img.shields.io/github/forks/sudaning/PytLab-Neko.svg)
 
-You can use the [editor on GitHub](https://github.com/sudaning/PytLab-Neko/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+##Introduction
+pyNeko is a pure Python library designed to making magic to code for Neko.
+You can use pyNeko to making magic beautiful.
+In [/scripts](https://github.com/sudaning/PytLab-Neko/tree/master/scripts) , there are some scripts written by me for daily use.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+##Installation
+1. Via **pip**  
+```pip install pyNeko```  
+2. Via **easy_install**  
+```easy_install pyNeko```
+3. From **source**  
+```python setup.py install```
 
-### Markdown
+##upgrading
+1. Via **pip**  
+```pip install --upgrade pyNeko```
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+##Examples
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```python
+from neko import ProcBar, color_str  
+p = ProcBar(mod='details')  
+total = 56  
+p.set_details(total, widget_type="percent").start("Dance up...")  
+for i in range(0, total + 1):  
+    if p.move():  
+    time.sleep(0.1)  
+p.stop(color_str("ending", "sky_blue"))
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sudaning/PytLab-Neko/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+##From the author
+**Welcome to use pyNeko (●'◡'●)ﾉ♥**  
+If you find any bug, please report it to me by opening a issue.  
+pyNeko needs to be improved, your contribution will be welcomed.  
