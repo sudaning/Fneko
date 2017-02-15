@@ -1,15 +1,18 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*- 
 
-import sys
+
 import time
+
+import sys
 from platform import system
-from threading import Thread, Lock
-from colorstr import color_str
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 LINUX = system() in ['Linux', 'Unix']
 WINDOWS = system() in ['Windows']
+
+from threading import Thread, Lock
+from colorstr import color_str
 
 class ProcBar(Thread):
 	"""
@@ -30,7 +33,7 @@ class ProcBar(Thread):
 
 	def __init__(self, name = '', timeout = -1, frequency = 10, mod = 'normal', symbol='round'):
 		if not LINUX:
-			raise Exception("current operation system is '%s' but 'Linux'" % osys())
+			raise Exception("current operation system is '%s' but 'Linux'" % system())
 		self.__mod = mod
 		if mod in ['normal']:
 			self.__ready = True
