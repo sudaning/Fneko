@@ -26,6 +26,7 @@ In [/scripts](https://github.com/sudaning/PytLab-Neko/tree/master/scripts) , the
 
 ##Examples
 
+* ProcBar
 ```python
 import time  
 from neko import ProcBar, color_str  
@@ -36,6 +37,67 @@ for i in range(0, total + 1):
     if p.move():  
     time.sleep(0.1)  
 p.stop(color_str("ending", "sky_blue"))
+```
+
+* Ssh
+```python
+import sys
+from neko import Ssh
+s = Ssh('10.9.0.115', username = 'root', password = 'root')
+stdin, stdout, stderr = s.exec_command('ls') 
+for l in stdout.readlines():
+    sys.stdout.write(l)
+```
+
+* tcpdump
+```python
+from neko import tcpdump
+t = tcpdump(eth='eth0', w='test.pcap', port=10002)
+if t.run():
+    t.terminate(5)
+```
+
+* redisCluterBee
+```python
+from neko import redisCluterBee
+r = redisCluterBee('10.9.0.115:7000,10.9.0.115:7001')
+print(r.set('123',456))
+print(r.get('123'))
+print(r.set('789','aaa'))
+print(r.get('sf'))
+print(r.get('789'))
+print(r.get('1234'))
+print(r.incr('total', 100))
+print(r.incr('total', 200))
+print(r.decr('total', 50))
+print(r.hset('city', 'cq', '023'))
+print(r.hset('city', 'bj', '010'))
+print(r.hget('city', 'sz'))
+print(r.hget('city', 'cq'))
+print(r.hgetall('city'))
+```
+
+* esl
+```python
+from neko import ESLEvent
+class MyEvent(ESLEvent):
+    # overwrite function channel_event
+    def channel_event(self, event):
+        event_name = event.getHeader("Event-Name")
+        event_sub_name = event.getHeader("Event-Subclass")
+
+        if event_name in ['CHANNEL_CREATE']:
+            uuid = event.getHeader("unique-id")
+            session_id = event.getHeader("variable_session_id")
+            call_dir = event.getHeader("Caller-Direction")
+            sip_call_id = event.getHeader("variable_sip_call_id")
+            print("FREESWIRCH calling... uuid:%s session_id:%s direction:%s call-id:%s" % (uuid, session_id, call_dir, sip_call_id))
+        pass
+
+	event = MyEvent('10.9.0.115', 8021, 'ClueCon')
+    timeout = 60
+    # running 60 seconds on block and then exit. It will never exit if timeout is 0, to return "end" in function channel_event can be stopped
+	event.run(timeout)
 ```
 
 ##From the author
