@@ -66,7 +66,7 @@ class tcpdump:
 
 	def terminate(self, timeout=0):
 		"""
-		terminated tcpdump immediately if timeout is 0 or after timeout 
+		terminated tcpdump immediately if timeout is 0 or after timeout(seconds)
 		"""
 		if not self.p:
 			return

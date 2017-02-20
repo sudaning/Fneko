@@ -9,19 +9,6 @@ long_description = '''
 =====
 Neko
 =====
-.. image:: https://travis-ci.org/sudaning/PytLab-Neko.svg?branch=master
-	:target: https://travis-ci.org/sudaning/PytLab-Neko
-	:alt: Build Status
-.. image:: https://img.shields.io/badge/python-3.5-green.svg
-	:target: https://www.python.org/downloads/release/python-351/
-	:alt: platform
-.. image:: https://img.shields.io/badge/python-2.7-green.svg
-	:target: https://www.python.org/downloads/release/python-2710
-	:alt: platform
-.. image:: https://img.shields.io/github/stars/sudaning/PytLab-Neko.svg
-	:target: https://github.com/sudaning/PytLab-Neko/stargazers
-.. image:: https://img.shields.io/github/forks/sudaning/PytLab-Neko.svg
-	:target: https://github.com/sudaning/PytLab-Neko/network
 Introduction
 ------------
 pyNeko is a pure Python library designed to making magic to code for Neko.
@@ -56,7 +43,7 @@ download_url = ''
 classifiers = [
 	'Development Status :: 5 - Production/Stable',
 	'Intended Audience :: Science/Research',
-	'Natural Language :: English'
+	'Natural Language :: English',
 	'Topic :: Text Processing',
 	'Operating System :: POSIX :: Linux',
 	'License :: OSI Approved :: MIT License',
