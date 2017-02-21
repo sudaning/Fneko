@@ -18,7 +18,16 @@ In [/scripts](https://github.com/sudaning/PytLab-Neko/tree/master/scripts) , the
 2. Via **easy_install**  
 ```easy_install pyNeko```  
 3. From **source**  
-```python setup.py install```  
+```shell
+# first time to use Neko
+cd third-party
+tar zxf swig-3.0.12.tar.gz
+cd swig-3.0.12
+./configure && make && make install
+```  
+```
+python setup.py install
+```
 
 ##upgrading
 1. Via **pip**  
