@@ -1,16 +1,16 @@
 #Welcome to Neko
-![](https://travis-ci.org/sudaning/Neko.svg?branch=master)
+![](https://travis-ci.org/sudaning/Fneko.svg?branch=master)
 ![](https://img.shields.io/pypi/v/pyNeko.svg)
 ![](https://img.shields.io/badge/python-3.5-green.svg)
 ![](https://img.shields.io/badge/python-2.7-green.svg)
 ![](https://img.shields.io/badge/docs-stable-brightgreen.svg?style=flat)
-![](https://img.shields.io/github/stars/sudaning/Neko.svg)
-![](https://img.shields.io/github/forks/sudaning/Neko.svg)
+![](https://img.shields.io/github/stars/sudaning/Fneko.svg)
+![](https://img.shields.io/github/forks/sudaning/Fneko.svg)
 
 ##Introduction
 pyNeko is a pure Python library designed to making magic to code for Neko.
 You can use pyNeko to making magic beautiful.
-In [/scripts](https://github.com/sudaning/Neko/tree/master/scripts) , there are some scripts written by me for daily use.
+In [/scripts](https://github.com/sudaning/Fneko/tree/master/scripts) , there are some scripts written by me for daily use.
 
 ##Installation
 1. Via **pip**  
