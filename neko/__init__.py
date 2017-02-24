@@ -1,4 +1,4 @@
-__version__ = "3.1"
+__version__ = "3.2"
 
 from procbar import ProcBar
 from colorstr import color_str

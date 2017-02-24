@@ -27,7 +27,7 @@ download_url = ''
 classifiers = [
 	'Development Status :: 5 - Production/Stable',
 	'Intended Audience :: Science/Research',
-	'Natural Language :: English',
+	'Natural Language :: Chinese (Simplified)',
 	'Topic :: Text Processing',
 	'Operating System :: POSIX :: Linux',
 	'License :: OSI Approved :: MIT License',

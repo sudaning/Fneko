@@ -50,6 +50,9 @@ class ESLEvent:
 			self.__esl = None
 			raise Exception(err)
 
+		if not self.__esl.connected():
+			raise Exception("Connect error")
+
 	def __del__(self):
 		self.__esl.disconnect()
 
