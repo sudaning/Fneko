@@ -78,10 +78,10 @@ class tcpdump:
 				delta = (end - datetime.datetime.now()).seconds
 				if delta <= 0 or delta > timeout:
 					break
-
-		self.p.terminate()
+		
 		if self.debug:
-			print("terminate process. [%s]" % " ".join(self.cmd))
+			print("terminate process. pid:%s [%s]" % (self.p.pid if self.p else "", " ".join(self.cmd)))
+		self.p.terminate()
 
 if __name__ == '__main__':
 
