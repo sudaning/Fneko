@@ -29,6 +29,19 @@ class tcpdump:
 		self.port = port
 		self.debug = debug
 
+		self.check(eth)
+
+	@staticmethod
+	def check(eth):
+		s = socket(AF_INET, SOCK_DGRAM)
+		try:
+			# test eth name is exist or not
+			inet_ntoa(ioctl(s.fileno(), 0X8915, pack('256s', eth[:15]))[20:24])
+		except IOError as err:
+			if 'No such device' in str(err):
+				print(str(err) + ":" + eth)
+				raise Exception(str(err) + ":" + eth)
+
 	def run(self):
 		"""
 		run tcpdump capture the net packet
@@ -38,15 +51,6 @@ class tcpdump:
 			cmd += [self.protocol]
 		if self.eth:
 			cmd += ['-i', self.eth]
-			
-			s = socket(AF_INET, SOCK_DGRAM)
-			try:
-				# test eth name is exist or not
-				inet_ntoa(ioctl(s.fileno(), 0X8915, pack('256s', self.eth[:15]))[20:24])
-			except IOError as err:
-				if 'No such device' in str(err):
-					print(str(err) + ":" + self.eth)
-					return False
 		if self.w:
 			cmd += ['-w', self.w]
 		if self.port:
