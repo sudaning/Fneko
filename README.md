@@ -1,11 +1,5 @@
 #Welcome to Neko
-![](https://travis-ci.org/sudaning/Fneko.svg?branch=master)
-![](https://img.shields.io/pypi/v/pyFneko.svg)
-![](https://img.shields.io/badge/python-3.5-green.svg)
-![](https://img.shields.io/badge/python-2.7-green.svg)
-![](https://img.shields.io/badge/docs-stable-brightgreen.svg?style=flat)
-![](https://img.shields.io/github/stars/sudaning/Fneko.svg)
-![](https://img.shields.io/github/forks/sudaning/Fneko.svg)
+[![Version][version-badge]][version-link] ![Supported-python-version][python27-badge] [![Build Status][travis-badge]][travis-link]  [![Coverage][coverage-badge]][coverage-link] ![Star][stars] ![Fork][forks] [![MIT License][license-badge]](LICENSE.md)
 
 ##Introduction
 pyFneko is a pure Python library designed to making magic to code for Neko.
@@ -105,3 +99,15 @@ class MyEvent(ESLEvent):
 **Welcome to use pyFneko (●'◡'●)ﾉ♥**  
 If you find any bug, please report it to me by opening a issue.
 pyFneko needs to be improved, your contribution will be welcomed.
+
+
+[version-badge]:   https://img.shields.io/pypi/v/pyFneko.svg?label=pypi
+[version-link]:    https://pypi.python.org/pypi/pyFneko/
+[python27-badge]:  https://img.shields.io/badge/python-2.7-green.svg
+[stars]:           https://img.shields.io/github/stars/sudaning/Fneko.svg
+[forks]:           https://img.shields.io/github/forks/sudaning/Fneko.svg
+[travis-badge]:    https://img.shields.io/travis/sudaning/Fneko.svg
+[travis-link]:     https://travis-ci.org/sudaning/Fneko
+[coverage-badge]:  https://img.shields.io/coveralls/sudaning/Fneko.svg
+[coverage-link]:   https://coveralls.io/github/sudaning/Fneko
+[license-badge]:   https://img.shields.io/badge/license-MIT-007EC7.svg
