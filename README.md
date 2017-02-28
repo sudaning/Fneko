@@ -1,5 +1,5 @@
 #Welcome to Neko
-[![Version][version-badge]][version-link]![Supported-python-version][python27-badge][![Build Status][travis-badge]][travis-link] [![Coverage][coverage-badge]][coverage-link] ![Star][stars]![Fork][forks][![MIT License][license-badge]](LICENSE.md)
+[![Version][version-badge]][version-link] ![Supported-python-version][python27-badge] [![Build Status][travis-badge]][travis-link]  [![Coverage][coverage-badge]][coverage-link] ![Star][stars] ![Fork][forks] [![MIT License][license-badge]](LICENSE.md)
 
 ##Introduction
 pyFneko is a pure Python library designed to making magic to code for Neko.
