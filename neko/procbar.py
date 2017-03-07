@@ -6,6 +6,7 @@ import time
 
 import sys
 from platform import system
+from random import choice
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 LINUX = system() in ['Linux', 'Unix']
@@ -31,7 +32,7 @@ class ProcBar(Thread):
 		'pig': [' ^(oo)^', ' ^(.o)^', ' ^(..)^', ' ^(o.)^', ],\
 		}
 
-	def __init__(self, name = '', timeout = -1, frequency = 10, mod = 'normal', symbol='round'):
+	def __init__(self, name = '', timeout = -1, frequency = 10, mod = 'normal', symbol=''):
 		if not LINUX:
 			raise Exception("current operation system is '%s' but 'Linux'" % system())
 		self.__mod = mod
@@ -63,7 +64,7 @@ class ProcBar(Thread):
 		return self.__mutex.release()
 
 	def __select_symbol(self):
-		return self.__default_symbols.get(self.__symbol, self.__default_symbols['round']) 
+		return self.__default_symbols.get(self.__symbol, choice(self.__default_symbols.items())[1]) 
 
 	def __clear_context(self, final = False):
 		if self.__final:

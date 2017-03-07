@@ -19,7 +19,7 @@ packages = [
 	'neko',
 ]
 platforms = ['linux']
-url = 'https://github.com/sudaning/PytLab-Neko'
+url = 'https://github.com/sudaning/Fneko'
 download_url = ''
 classifiers = [
 	'Development Status :: 5 - Production/Stable',
