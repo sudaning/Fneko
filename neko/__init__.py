@@ -1,7 +1,7 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*- 
 
-__version__ = "3.3"
+__version__ = "3.4"
 
 from procbar import ProcBar
 from colorstr import color_str
