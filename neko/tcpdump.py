@@ -31,6 +31,18 @@ class tcpdump:
 
 		self.check(eth)
 
+	def __enter__(self):
+		return self
+
+	def __exit__(self, exc_type, exc_value, exc_tb):
+		if exc_tb:
+			return False
+		else:
+			self.__del__()
+
+	def __del__(self):
+		self.terminate()
+
 	@staticmethod
 	def check(eth):
 		s = socket(AF_INET, SOCK_DGRAM)

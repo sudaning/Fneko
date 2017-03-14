@@ -57,6 +57,18 @@ class ProcBar(Thread):
 		self.__pre_context_len = 0
 		self.__final = False
 		
+	def __enter__(self):
+		return self
+
+	def __exit__(self, exc_type, exc_value, exc_tb):
+		if exc_tb:
+			return False
+		else:
+			self.__del__()
+
+	def __del__(self):
+		self.stop()
+
 	def __lock(self):
 		return self.__mutex.acquire()
 

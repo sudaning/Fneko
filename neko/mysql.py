@@ -40,6 +40,15 @@ class MySQL:
 		except Exception as err:
 			raise Exception(err)
 
+	def __enter__(self):
+		return self
+
+	def __exit__(self, exc_type, exc_value, exc_tb):
+		if exc_tb:
+			return False
+		else:
+			self.__del__()
+
 	def __del__(self):
 		if self.__conn:
 			self.__conn.close()

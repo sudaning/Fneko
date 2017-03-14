@@ -32,23 +32,34 @@ except Exception as err:
 
 class redisCluterBee:
 
-	__pool = {}
-	__primary_addr = ""
-
 	def __init__(self, addrs, debug=False):
-		self.addrs = addrs
-		self.debug = debug
+		self.__addrs = addrs
+		self.__debug = debug
+		self.__pool = {}
+		self.__primary_addr = ""
 
 		for addr in addrs.split(','):
 			host, port = addr.split(':')
 			self.__pool[addr] = redis.Redis(host=host, port=int(port), db=0, password=None, socket_timeout=3)
-			if self.debug:
+			if self.__debug:
 				print("redis init %s:%d %s" % (host, int(port), self.__pool[addr]))
 		else:
 			self.__primary_addr = addr
-			if self.debug:
+			if self.__debug:
 				print("redis pool: %s" % self.__pool)
 				print("redis primary addr: %s" % self.__primary_addr)
+
+	def __enter__(self):
+		return self
+
+	def __exit__(self, exc_type, exc_value, exc_tb):
+		if exc_tb:
+			return False
+		else:
+			self.__del__()
+
+	def __del__(self):
+		self.__pool = None
 
 	def __fun__(self, r, method):
 		if r:
@@ -67,13 +78,13 @@ class redisCluterBee:
 	def __run__(self, method, *argv):
 		ret = None
 		f = self.__fun__(self.__pool.get(self.__primary_addr, None), method)
-		if self.debug:
+		if self.__debug:
 			print("%s %s %s" % (method, argv, f))
 		try:
 			ret = f and f(*argv)
 		except redis.exceptions.ResponseError as err:
 			res = str(err).split(' ')
-			if self.debug:
+			if self.__debug:
 				print(res)
 			# 重定向redis服务器
 			if len(res) and res[0] == "MOVED":
@@ -83,7 +94,7 @@ class redisCluterBee:
 						host, port = res[2].split(':')
 						r = redis.Redis(host=host, port=int(port), db=0, password=None, socket_timeout=3)
 						self.__pool[res[2]] = r
-						if self.debug:
+						if self.__debug:
 							print("redis init %s:%d %s" % (host, int(port), r))
 
 					f = self.__fun__(r, method)
