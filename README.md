@@ -89,10 +89,23 @@ class MyEvent(ESLEvent):
             print("FREESWIRCH calling... uuid:%s session_id:%s direction:%s call-id:%s" % (uuid, session_id, call_dir, sip_call_id))
         pass
 
-	event = MyEvent('10.9.0.115', 8021, 'ClueCon')
-    timeout = 60
-    # running 60 seconds on block and then exit. It will never exit if timeout is 0, to return "end" in function channel_event can be stopped
-	event.run(timeout)
+event = MyEvent('10.9.0.115', 8021, 'ClueCon')
+timeout = 60
+# running 60 seconds on block and then exit. It will never exit if timeout is 0, to return "end" in function channel_event can be stopped
+event.run(timeout)
+```
+
+* mysql
+```python
+from neko import MySQL
+try:
+	sql = MySQL('10.9.0.115', 3306, 'sa', '123456', 'mydb')
+	# 查询广东省的城市
+	result = sql.execute('SELECT id, name, area FROM tb_cities WHERE province="广东"')
+	for r in result:
+		print(r[0], r[1], r[2])
+except Exception as err：
+	print(err)
 ```
 
 ##From the author
