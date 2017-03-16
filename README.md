@@ -1,12 +1,12 @@
-#Welcome to Neko
+# Welcome to Neko
 [![Version][version-badge]][version-link] ![Supported-python-version][python27-badge] [![Build Status][travis-badge]][travis-link]  [![Coverage][coverage-badge]][coverage-link] ![Star][stars] ![Fork][forks] [![MIT License][license-badge]](LICENSE.md)
 
-##Introduction
+## Introduction
 pyFneko is a pure Python library designed to making magic to code for Neko.
 You can use pyFneko to making magic beautiful.
 In [/scripts](https://github.com/sudaning/Fneko/tree/master/scripts) , there are some scripts written by me for daily use.
 
-##Installation
+## Installation
 1. Via **pip**  
 ```pip install pyFneko```  
 2. Via **easy_install**  
@@ -15,11 +15,11 @@ In [/scripts](https://github.com/sudaning/Fneko/tree/master/scripts) , there are
 ```cd third-party && tar zxf swig-3.0.12.tar.gz && cd swig-3.0.12 && ./configure && make && make install```  
 ```python setup.py install```  
 
-##upgrading
+## upgrading
 1. Via **pip**  
 ```pip install --upgrade pyFneko```
 
-##Examples
+## Examples
 
 * ProcBar
 ```python
@@ -108,7 +108,7 @@ except Exception as err：
 	print(err)
 ```
 
-##From the author
+## From the author
 **Welcome to use pyFneko (●'◡'●)ﾉ♥**  
 If you find any bug, please report it to me by opening a issue.
 pyFneko needs to be improved, your contribution will be welcomed.
