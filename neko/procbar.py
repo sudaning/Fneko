@@ -3,7 +3,7 @@
 
 
 import time
-
+import datetime
 import sys
 from platform import system
 from random import choice
@@ -48,7 +48,10 @@ class ProcBar(Thread):
 		Thread.setDaemon(self, True)
 		self.__mutex = Lock()
 		self.__name = name
+		self.__start_time = 0
+		self.__stop_time = 0
 		self.__timeout = timeout > 0 and timeout or self.__default_timeout
+
 		self.__frequency = frequency > 0 and frequency or self.__default_frequency
 
 		self.__isrun = False
@@ -86,7 +89,8 @@ class ProcBar(Thread):
 		sys.stdout.flush()
 
 	def __print_context(self):
-		context = self.__cur_symbol + " " + self.__context
+		time_context = str(datetime.datetime.now() - self.__start_time)[:-7]
+		context = " ".join([self.__cur_symbol, self.__context, time_context])
 		sys.stdout.write(context)
 		sys.stdout.flush()
 		self.__pre_context_len = len(context)
@@ -162,19 +166,21 @@ class ProcBar(Thread):
 		if tips:
 			sys.stdout.write(tips)
 			sys.stdout.flush()
+		self.__start_time = datetime.datetime.now()
 		Thread.start(self)
 			
 		return self
 
 	def stop(self, tips=""):
+		self.__lock()
 		if self.__isrun:
-			self.__lock()
 			self.__clear_context(True)
-			self.__unlock()
 			self.__isrun = False
 			self.__ready = False
+		self.__unlock()
 		if tips:
 			print(tips)
+		self.__stop_time = datetime.datetime.now()
 		return self
 
 if __name__ == '__main__':
