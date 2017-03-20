@@ -32,7 +32,7 @@ class ProcBar(Thread):
 		'pig': [' ^(oo)^', ' ^(.o)^', ' ^(..)^', ' ^(o.)^', ],\
 		}
 
-	def __init__(self, name = '', timeout = -1, frequency = 10, mod = 'normal', symbol=''):
+	def __init__(self, name = '', timeout = -1, frequency = 10, mod = 'normal', symbol='', show_time=True):
 		if not LINUX:
 			raise Exception("current operation system is '%s' but 'Linux'" % system())
 		self.__mod = mod
@@ -53,6 +53,7 @@ class ProcBar(Thread):
 		self.__timeout = timeout > 0 and timeout or self.__default_timeout
 
 		self.__frequency = frequency > 0 and frequency or self.__default_frequency
+		self.__show_time = show_time
 
 		self.__isrun = False
 		self.__cur_symbol = ""
@@ -89,7 +90,7 @@ class ProcBar(Thread):
 		sys.stdout.flush()
 
 	def __print_context(self):
-		time_context = str(datetime.datetime.now() - self.__start_time)[:-7]
+		time_context = self.__show_time and str(datetime.datetime.now() - self.__start_time)[:-7] or ""
 		context = " ".join([self.__cur_symbol, self.__context, time_context])
 		sys.stdout.write(context)
 		sys.stdout.flush()
