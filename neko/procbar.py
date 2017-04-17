@@ -86,20 +86,23 @@ class ProcBar(Thread):
 		if self.__final:
 			self.__final = final
 			return
+		self.__lock()
 		sys.stdout.write('\b'*self.__pre_context_len + ' '*self.__pre_context_len + '\b'*self.__pre_context_len)
 		sys.stdout.flush()
+		self.__unlock()
 
 	def __print_context(self):
 		time_context = self.__show_time and str(datetime.datetime.now() - self.__start_time)[:-7] or ""
 		context = " ".join([self.__cur_symbol, self.__context, time_context])
+		self.__lock()
 		sys.stdout.write(context)
 		sys.stdout.flush()
+		self.__unlock()
 		self.__pre_context_len = len(context)
 		return context
 
 	def run(self):
 		try:
-			self.__isrun = True
 			if self.__timeout != -1:
 				cnt = self.__timeout * self.__frequency
 				forever_loop = False
@@ -111,14 +114,14 @@ class ProcBar(Thread):
 			symbols_len = len(symbol)
 			frist = True
 			while (cnt or forever_loop) and self.__isrun:
-				self.__lock()
+				#self.__lock()
 				self.__cur_symbol = symbol[cnt % symbols_len]
 				if frist:
 					frist = False
 				else:
 					self.__clear_context()
 				self.__print_context()
-				self.__unlock()
+				#self.__unlock()
 				time.sleep(sleep_time)
 				cnt -= 1
 				
@@ -157,7 +160,7 @@ class ProcBar(Thread):
 		self.__step += 1
 		self.__context = self.__proc_details()
 		if self.__step > self.__total:
-			p.stop()
+			self.stop()
 		return True
 
 	def start(self, tips=""):
@@ -168,17 +171,18 @@ class ProcBar(Thread):
 			sys.stdout.write(tips)
 			sys.stdout.flush()
 		self.__start_time = datetime.datetime.now()
+		self.__isrun = True
 		Thread.start(self)
 			
 		return self
 
 	def stop(self, tips=""):
-		self.__lock()
+		#self.__lock()
 		if self.__isrun:
 			self.__clear_context(True)
 			self.__isrun = False
 			self.__ready = False
-		self.__unlock()
+		#self.__unlock()
 		if tips:
 			print(tips)
 		self.__stop_time = datetime.datetime.now()
@@ -190,7 +194,7 @@ if __name__ == '__main__':
 		p = ProcBar(timeout=5)
 		print("yeah!yeah!yeah! ~~SHOW TIME~~")
 		p.start("月光舞法 法苏天女 变身! Dancing baby 法苏 Trans out...")
-		time.sleep(2)
+		time.sleep(1)
 		p.stop(color_str("lightning", "red"))
 		time.sleep(1)
 		del p
@@ -199,7 +203,7 @@ if __name__ == '__main__':
 		sys.stdout.flush()
 		p = ProcBar(timeout=5, frequency=5, symbol='pig')
 		p.start()
-		time.sleep(6)
+		time.sleep(1)
 		p.stop(color_str("lightning", "yellow"))
 		del p
 
@@ -207,13 +211,13 @@ if __name__ == '__main__':
 		sys.stdout.flush()
 		p = ProcBar(timeout=5, frequency=5, symbol='smile')
 		p.start()
-		time.sleep(6)
+		time.sleep(1)
 		p.stop(color_str("lightning", "blue"))
 		del p
 
 		p = ProcBar(timeout=5, frequency=5, symbol='cat')
 		p.start("月光舞法 法苏天女 变身! Dancing baby 法苏 Trans out...")
-		time.sleep(6)
+		time.sleep(1)
 		p.stop(color_str("lightning", "green"))
 		del p
 		

@@ -15,6 +15,7 @@ except ImportError as err:
 		result += os.system("yum -y install python-pip")
 		result += os.system("pip install --upgrade pip")
 		result += os.system("pip install --upgrade setuptools")
+		result += os.system("yum install mysql-devel")
 		result += os.system("pip install mysql")
 		if 0 != result:
 			print(color_str("sorry, there have some problems on auto-install MySQLdb, please install it manually", "red"))
