@@ -16,6 +16,7 @@ except ImportError as err:
 		result += os.system("yum -y install python-pip")
 		result += os.system("pip install --upgrade pip")
 		result += os.system("pip install pycrypto")
+		result += os.system("yum install libffi libffi-devel")
 		result += os.system("pip install paramiko")
 		if 0 != result:
 			print(color_str("sorry, there have some problems on auto-install paramiko, please install it manually", "red"))
