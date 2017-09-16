@@ -18,6 +18,7 @@ except ImportError as err:
 		result += os.system("pip install --upgrade setuptools")
 		result += os.system("yum install gcc")
 		result += os.system("yum install gcc-c++")
+		result += os.system("yum install swig -y")
 		result += os.system("pip install python-esl")
 		if 0 != result:
 			print(color_str("sorry, there have some problems on auto-install ESL, please install it manually", "red"))
